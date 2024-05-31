@@ -1,0 +1,15 @@
+export enum CurrencyEnum {
+  Rub = 'rub',
+  Usd = 'usd',
+  Eur = 'eur',
+  Kzt = 'kzt',
+  Amd = 'amd',
+  Inr = 'inr',
+  All = 'Все',
+  Rubles = 'Рубли',
+  Dollars = 'Доллары',
+  Tenge = 'Тенге',
+  Drama = 'Драм',
+  Rupee = 'Рупия',
+  Euro = 'Евро',
+}

@@ -1,0 +1,155 @@
+.currency-block {
+  border-radius: 20px;
+  box-shadow: 0px 0px 24px 0px rgba(90, 89, 89, 0.1);
+  width: 349px;
+  margin: 24px 12px;
+  padding: 24px;
+  background-color: rgba(255, 255, 255, 1);
+}
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 29.05px;
+  text-align: left;
+  color: rgba(41, 41, 41, 1);
+}
+
+//банки
+.banks-block {
+  display: flex;
+  flex-direction: column
+}
+
+.selection-fields-block {
+  overflow-y: scroll;
+  width: 349px;
+  height: 440px;
+}
+::ng-deep .selection-field-deep {
+  display: flex !important;
+  align-content: flex-start !important;
+}
+.mat-button-toggle-checked {
+  background-color: rgba(233, 255, 214, 1);
+  border-radius: 12px;
+}
+.mat-button-toggle-checked.mat-button-toggle-appearance-standard {
+  color: rgba(41, 41, 41, 1);
+}
+
+::ng-deep .selection-field {
+  //display: flex!important;
+  //justify-content: start!important;
+  //align-items: start;
+  //width: 332px;
+  //height: 72px;
+  //border-radius: 12px;
+  //border: none;
+  //background-color: rgba(255, 255, 255, 1);
+  //
+  //&:focus{
+  //  background-color: rgba(233, 255, 214, 1);
+  //}
+  //
+  //p {
+  //  font-size: 16px!important;
+  //  font-weight: 500!important;
+  //  line-height: 19.36px!important;
+  //  text-align: left!important;
+  //  margin: 0!important;
+  //}
+  //img {
+  //  width: 32px!important;
+  //  height: 32px!important;
+  //}
+}
+
+//кнопки Валюта и Криптовалюта//
+.button-block {
+  margin-top: 32px;
+  background-color: rgba(244, 244, 244, 1);
+  border-radius: 8px;
+}
+
+.currency-button-block{
+  border: none;
+}
+
+.currency-button{
+  display: flex;
+  align-items: center;
+  height: 40px;
+  border-left: none!important;
+}
+
+.currencyCheck{
+  width: 173px;
+  border: 1px solid rgba(125, 189, 66, 1);
+  background: rgba(125, 189, 66, 1);
+  color: rgba(255, 255, 255, 1);
+  border-radius: 8px;
+  &:hover{
+    background: rgba(125, 189, 66, 1);
+  }
+}
+
+.currencyUncheck{
+  width: 173px;
+  background: rgba(244, 244, 244, 1);
+  color: rgba(41, 41, 41, 1);
+  border-radius: 8px;
+  border: 1px solid rgba(244, 244, 244, 1);
+  &:hover{
+    background: rgba(255, 255, 255, 1);
+    border-radius: 8px!important;
+  }
+}
+
+////фильтр
+//.currency-filter-block {
+//  display: flex;
+//  align-items: center;
+//  margin-top: 20px;
+//  overflow-y: hidden;
+//  //scrollbar-width: none;
+//}
+//.block-filter{
+//  display: flex;
+//}
+//  //убирает галочки
+//::ng-deep .mat-mdc-standard-chip .mdc-evolution-chip__graphic {
+//  height: var(--mdc-chip-with-avatar-avatar-size, 0px)!important;
+//  width: var(--mdc-chip-with-avatar-avatar-size, 0px)!important;
+//  font-size: var(--mdc-chip-with-avatar-avatar-size, 0px)!important;
+//}
+//.filter-element {
+//  background: rgba(255, 255, 255, 1)!important;
+//  --mdc-chip-label-text-color: rgb(41, 41, 41) !important;
+//  --mdc-chip-elevated-container-color: rgba(255, 255, 255, 1) !important;
+//
+//  &:hover {
+//    background: rgba(255, 255, 255, 1)!important;
+//    border-radius: 8px!important;
+//  }
+//
+//  &:focus-within {
+//    display: none !important;
+//    background: rgba(255, 255, 255, 1)!important;
+//  }
+//}
+//.mat-mdc-standard-chip {
+//  background-color: rgba(255, 255, 255, 1)!important;
+//}
+//::ng-deep .mat-mdc-chip-ripple {
+//  display: none !important;
+//}
+//
+////бордер при выборе
+//.mat-mdc-standard-chip.mat-primary.mat-mdc-chip-selected, .mat-mdc-standard-chip.mat-primary.mat-mdc-chip-highlighted {
+//    border: 1px solid rgba(125, 189, 66, 1);
+//    border-radius: 8px;
+//}
+//::ng-deep .mat-mdc-chip-action:focus .mat.mdc.focus-indicator::before {
+//  content: none!important;
+//  background-color: rgba(255, 255, 255, 1)!important;
+//}

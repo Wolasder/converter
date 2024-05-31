@@ -1,0 +1,50 @@
+<div class="calculate-block">
+  <div class="change-currency-block">
+    <h1>Обмен</h1>
+
+    <div class="example-button-container">
+      <button class="change-currency" mat-icon-button color="primary" aria-label="Example icon button with a delete icon" (click)="swapCalc()">
+        <mat-icon>
+          <img class="vector-image" src="/assets/images/Vector-left.svg">
+          <img class="vector-image" src="/assets/images/Vector-right.svg">
+        </mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="value-block">
+    <p>Отдаете</p>
+    <div class="currency-value">
+      <img alt="" src="{{combineInfo.send?.logo}}">
+      <mat-form-field class="example-form-field">
+        <input matInput type="number" [(ngModel)]="sandValue">
+        <button *ngIf="sandValue" matSuffix mat-icon-button aria-label="Clear" (click)="sandValue=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="value-block">
+    <p>Получаете</p>
+    <div class="currency-value">
+      <img alt="" src="{{combineInfo.get?.logo}}">
+      <mat-form-field  class="example-form-field">
+        <input matInput disabled type="number" [(ngModel)]="convertedValue">
+<!--        <button *ngIf="convertedValue"  matSuffix mat-icon-button aria-label="Clear" (click)="convertedValue=''">-->
+<!--          <mat-icon>close</mat-icon>-->
+<!--        </button>-->
+      </mat-form-field>
+    </div>
+  </div>
+
+
+  <div class="rate-block">
+    <p>Курс обмена</p>
+    <div class="exchange-rate">97.26 RUB = 1 USDT</div>
+  </div>
+
+<button (click)="qweqweqwe()">====</button>
+<!--  <div>{{combineInfo2}}</div>-->
+
+</div>

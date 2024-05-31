@@ -1,0 +1,75 @@
+<div class="currency-block">
+  <h1 class="title" [textContent]="title"></h1>
+  <!-- кнопки Валюта и Криптовалюта-->
+  <div class="button-block">
+      <mat-button-toggle-group class="currency-button-block"  aria-label="Font Style" [(ngModel)]="checkedButtonValue">
+        <mat-button-toggle
+          value="Валюта"
+          class="currency-button"
+          [ngClass]="{'currencyCheck': checkedButtonBoolean, 'currencyUncheck': !checkedButtonBoolean}"
+          (click)="checkedButtonBoolean = true"
+        >Валюта</mat-button-toggle>
+        <mat-button-toggle
+          value="Криптовалюта"
+          class="currency-button"
+          [ngClass]="{'currencyUncheck': checkedButtonBoolean, 'currencyCheck': !checkedButtonBoolean}"
+          (click)="checkedButtonBoolean = false"
+        >Криптовалюта</mat-button-toggle>
+      </mat-button-toggle-group>
+  </div>
+<!-- фильтр-->
+  <div>
+    <div *ngIf="checkedButtonValue === 'Валюта'" class="currency-filter-block">
+      <button><</button>
+      <mat-chip-listbox>
+        <div class="block-filter">
+          <mat-chip-option
+            *ngFor="let item of currency"
+            [selected]="initialSelected===item"
+            (click)="usedFilter(item)"
+          >{{item}}</mat-chip-option>
+        </div>
+
+      </mat-chip-listbox>
+      <button>></button>
+    </div>
+    <div *ngIf="checkedButtonValue==='Криптовалюта'" class="currency-filter-block">
+      <mat-chip-listbox>
+        <mat-chip-option selected disabled>Криптовалюта</mat-chip-option>
+      </mat-chip-listbox>
+    </div>
+  </div>
+
+<!-- поле выбора банка или крипты-->
+  <div>
+    <div *ngIf="checkedButtonValue==='Валюта'" class="selection-fields-block">
+      <mat-button-toggle-group name="banks" class="banks-block">
+        <mat-button-toggle
+          *ngFor="let item of usedBanks"
+          class="selection-field" value=">{{item.name}}"
+          (click)="toCalc(item)"
+        >
+          <div class="selection-field-deep">
+            <img alt="#" src='{{item.logo}}'/>
+            <p>{{item.name}}</p>
+          </div>
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <div *ngIf="checkedButtonValue==='Криптовалюта'" class="selection-fields-block">
+      <mat-button-toggle-group name="crypto" class="banks-block">
+        <mat-button-toggle
+          *ngFor="let item of crypto"
+          class="selection-field"
+          value=">{{item.name}}"
+          (click)="toCalc(item)"
+        >
+          <div class="selection-field-deep">
+            <img alt="#" src='{{item.logo}}'/>
+            <p>{{item.name}}</p>
+          </div>
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+  </div>
+</div>
