@@ -1,0 +1,98 @@
+.currency-block {
+  border-radius: 20px;
+  box-shadow: 0px 0px 24px 0px rgba(90, 89, 89, 0.1);
+  width: 349px;
+  height: 1171px;
+  margin: 24px 12px;
+  padding: 24px;
+  background-color: rgb(255, 255, 255);
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 29.05px;
+  text-align: left;
+  color: rgb(41, 41, 41);
+}
+
+.button-block {
+  margin-top: 32px;
+  background-color: rgb(244, 244, 244);
+  display: flex;
+  gap: 4px;
+}
+
+.button-block-button {
+  width: 173px;
+  height: 35px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.36px;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  padding: 8px 16px;
+  border: 1px solid rgb(125, 189, 66);
+  background: rgb(125, 189, 66);
+  border-radius: 8px;
+}
+
+.currency-scroll-block {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.currency-scroll {
+  width: 350px;
+  height: 51px;
+  gap: 0px;
+  align-items: center;
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  cursor: pointer;
+}
+
+.currency-scroll-text {
+  padding: 4px 12px 6px 12px;
+  margin: 0;
+  gap: 0px;
+  border-radius: 6px;
+  border: 1px solid rgb(255, 255, 255);
+}
+
+.currency-button {
+  width: 24px;
+  height: 24px;
+  background: rgb(255, 255, 255);
+  border-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 10px 15px rgb(255, 255, 255);
+}
+
+.selection-fields-block {
+  overflow-y: scroll;
+  border: 1px solid black;
+  width: 349px;
+}
+
+.selection-field {
+  display: flex;
+  align-items: center;
+  width: 332px;
+  height: 72px;
+  border-radius: 12px;
+  background-color: rgb(233, 255, 214);
+}
+.selection-field p {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.36px;
+  text-align: left;
+  margin: 0;
+}
+
+/*# sourceMappingURL=currency.component.css.map */
