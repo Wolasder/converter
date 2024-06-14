@@ -1,6 +1,6 @@
-import {BaseModel} from "./base.model";
+import {BaseModel} from './base.model';
 
-export class CryptoModel extends BaseModel{
+export class CryptoModel extends BaseModel {
   public cryptoUsdValue: number;
 
   constructor() {

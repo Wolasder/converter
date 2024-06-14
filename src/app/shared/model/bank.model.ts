@@ -1,6 +1,6 @@
-import {BaseModel} from "./base.model";
+import {BaseModel} from './base.model';
 
-export class BankModel extends BaseModel{
+export class BankModel extends BaseModel {
   public bankCurrency: string | null;
   public usdBuy: number | null;
   public usdSell: number | null;
