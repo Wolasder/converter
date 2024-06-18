@@ -1,19 +1,14 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {CurrencyEnum} from "../shared/currency.enum";
+import {catchError, Observable, of} from "rxjs";
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class CurrencyValueService {
-  //
-  // constructor(private http: HttpClient) {
-  // }
-  //
-  // getValueBank() {
-  //   this.http.get('https://v6.exchangerate-api.com/v6/b13a95470fcb9d94b062f03f/latest/USD')
-  //     .subscribe((value: any) => {
-  //
-  //     })
-  // }
-  // constructor() { }
+  constructor(private http: HttpClient) {
+  }
+  public getValue(sendCurrency: string): Observable<any> {
+    return this.http.get('https://api.coinbase.com/v2/exchange-rates?currency=' + sendCurrency)
+      .pipe(catchError(() => of({})))
+  }
 }

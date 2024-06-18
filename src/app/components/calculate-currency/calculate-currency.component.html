@@ -15,12 +15,11 @@
   <div class="value-block">
     <p>Отдаете</p>
     <div class="currency-value">
-      <img alt="" src="{{combineInfo.send?.logo}}">
+      <div class="currency-value-img">
+        <img alt="" src="{{combineInfo.send?.logo}}">
+      </div>
       <mat-form-field class="example-form-field">
         <input matInput type="number" [(ngModel)]="sandValue">
-        <button *ngIf="sandValue" matSuffix mat-icon-button aria-label="Clear" (click)="sandValue=''">
-          <mat-icon>close</mat-icon>
-        </button>
       </mat-form-field>
     </div>
   </div>
@@ -28,23 +27,77 @@
   <div class="value-block">
     <p>Получаете</p>
     <div class="currency-value">
-      <img alt="" src="{{combineInfo.get?.logo}}">
-      <mat-form-field  class="example-form-field">
-        <input matInput disabled type="number" [(ngModel)]="convertedValue">
-<!--        <button *ngIf="convertedValue"  matSuffix mat-icon-button aria-label="Clear" (click)="convertedValue=''">-->
-<!--          <mat-icon>close</mat-icon>-->
-<!--        </button>-->
-      </mat-form-field>
+      <div class="currency-value-img">
+        <img alt="" src="{{combineInfo.get?.logo}}">
+      </div>
+      <div>
+        <mat-form-field class="example-form-field">
+          <input matInput type="number" readonly [(ngModel)]="convertedValue * sandValue">
+        </mat-form-field>
+      </div>
     </div>
   </div>
 
 
   <div class="rate-block">
     <p>Курс обмена</p>
-    <div class="exchange-rate">97.26 RUB = 1 USDT</div>
+    <div *ngIf="apiValue" class="exchange-rate">{{apiValue + ' ' + combineInfo.send?.currency}} = 1 {{combineInfo.get?.currency}}</div>
   </div>
-
-<button (click)="qweqweqwe()">====</button>
-<!--  <div>{{combineInfo2}}</div>-->
-
 </div>
+
+
+
+
+<!--<div class="calculate-block">-->
+<!--  <div class="change-currency-block">-->
+<!--    <h1>Обмен</h1>-->
+
+<!--    <div class="example-button-container">-->
+<!--      <button class="change-currency" mat-icon-button color="primary" aria-label="Example icon button with a delete icon" (click)="swapCalc()">-->
+<!--        <mat-icon>-->
+<!--          <img class="vector-image" src="/assets/images/Vector-left.svg">-->
+<!--          <img class="vector-image" src="/assets/images/Vector-right.svg">-->
+<!--        </mat-icon>-->
+<!--      </button>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div class="value-block">-->
+<!--    <p>Отдаете</p>-->
+<!--    <div class="currency-value">-->
+<!--      <img alt="" src="{{combineInfo.send?.logo}}">-->
+<!--      <mat-form-field class="example-form-field">-->
+<!--        <input matInput type="number" [(ngModel)]="sandValue">-->
+<!--        <button *ngIf="sandValue" matSuffix mat-icon-button aria-label="Clear" (click)="sandValue=''">-->
+<!--          <mat-icon>close</mat-icon>-->
+<!--        </button>-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div class="value-block">-->
+<!--    <p>Получаете</p>-->
+<!--    <div class="currency-value">-->
+<!--      <img alt="" src="{{combineInfo.get?.logo}}">-->
+<!--      <mat-form-field  class="example-form-field">-->
+<!--        <input matInput disabled type="number" [(ngModel)]="convertedValue">-->
+<!--        &lt;!&ndash;        <button *ngIf="convertedValue"  matSuffix mat-icon-button aria-label="Clear" (click)="convertedValue=''">&ndash;&gt;-->
+<!--        &lt;!&ndash;          <mat-icon>close</mat-icon>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </button>&ndash;&gt;-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--  </div>-->
+
+
+<!--  <div class="rate-block">-->
+<!--    <p>Курс обмена</p>-->
+<!--    <div class="exchange-rate">{{isBank(combineInfo.send) ? combineInfo.send.usdSell : ''}} {{isBank(combineInfo.send) ? combineInfo.send.bankCurrency : ''}} = 1 USDT</div>-->
+<!--  </div>-->
+
+<!--  <button (click)="qweqweqwe()">====</button>-->
+
+<!--  <div>{{isBank(combineInfo.send) ? combineInfo.send.usdBuy : '1'}}</div>-->
+<!--  <div>{{isBank2(combineInfo.get) ? combineInfo.get.cryptoUsdValue : '2'}}</div>-->
+
+<!--</div>-->
+

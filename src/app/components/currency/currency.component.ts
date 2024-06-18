@@ -1,15 +1,9 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {BankModel} from "../../shared/model/bank.model";
 import {BANKS} from "../../shared/banks";
 import {CURRENCY} from "../../shared/currency";
-import {CurrencyModel} from "../../shared/model/currency.model";
 import {CRYPTO} from "../../shared/crypto";
-import {CryptoModel} from "../../shared/model/crypto.model";
-import {HttpClient} from "@angular/common/http";
-import {CurrencyValueService} from "../../services/currency-value.service";
-import {CombineModel} from "../../shared/model/combine.model";
-import {FormControl} from "@angular/forms";
 import {CurrencyEnum} from "../../shared/currency.enum";
+import {SelectedModel} from "../../shared/model/selected.model";
 
 @Component({
   selector: 'app-currency',
@@ -17,15 +11,15 @@ import {CurrencyEnum} from "../../shared/currency.enum";
   styleUrls: ['./currency.component.scss'],
 })
 export class CurrencyComponent {
-  public banks: BankModel[] = BANKS;
+  public banks: SelectedModel[] = BANKS;
+  public crypto: SelectedModel[] = CRYPTO;
   public currency: string[] = CURRENCY;
-  public crypto: CryptoModel[] = CRYPTO;
   public checked: boolean = true;
   public checkedButtonValue: string = 'Валюта';
   public checkedButtonBoolean: boolean = true;
   public currencyFilter: string = '';
   public clicked: boolean = true;
-  public usedBanks: BankModel[] = [];
+  public usedBanks: SelectedModel[] = [];
   public isFilterCheck: any = {
     all : true,
     rub : false,
@@ -40,14 +34,14 @@ export class CurrencyComponent {
   @Input() public title: string = '';
   @Input() public whenIsCheck: boolean = true;
 
-  @Output() public toAppCalc: EventEmitter<BankModel | CryptoModel> = new EventEmitter<BankModel | CryptoModel>()
+  @Output() public toAppCalc: EventEmitter<SelectedModel> = new EventEmitter<SelectedModel>()
 
   ngOnInit(): void {
     //изначально отображает все банки
     this.usedBanks.push(...this.banks);
   }
 
-  toCalc(event: BankModel | CryptoModel):void {
+  toCalc(event: SelectedModel):void {
     this.toAppCalc.emit(event)
   }
 
@@ -66,7 +60,7 @@ export class CurrencyComponent {
 
     if (filter === CurrencyEnum.Rubles && !this.isFilterCheck.rub) {
       this.usedBanks = [];
-      this.usedBanks.push(...this.banks.filter((currency: BankModel)=> currency.bankCurrency === CurrencyEnum.Rub));
+      this.usedBanks.push(...this.banks.filter((currency: SelectedModel)=> currency.currency === CurrencyEnum.Rub));
       this.isFilterCheck.rub = true;
     } else if (filter === CurrencyEnum.Rubles && this.isFilterCheck.rub) {
       this.usedBanks = [];
@@ -77,7 +71,7 @@ export class CurrencyComponent {
 
     if (filter === CurrencyEnum.Dollars && !this.isFilterCheck.usd) {
       this.usedBanks = [];
-      this.usedBanks.push(...this.banks.filter((currency: BankModel)=> currency.bankCurrency === CurrencyEnum.Usd));
+      this.usedBanks.push(...this.banks.filter((currency: SelectedModel)=> currency.currency === CurrencyEnum.Usd));
       this.isFilterCheck.usd = true;
     } else if (filter === CurrencyEnum.Dollars && this.isFilterCheck.usd) {
       this.usedBanks = [];
@@ -88,7 +82,7 @@ export class CurrencyComponent {
 
     if (filter === CurrencyEnum.Tenge && !this.isFilterCheck.kzt) {
       this.usedBanks = [];
-      this.usedBanks.push(...this.banks.filter((currency: BankModel)=> currency.bankCurrency === CurrencyEnum.Kzt));
+      this.usedBanks.push(...this.banks.filter((currency: SelectedModel)=> currency.currency === CurrencyEnum.Kzt));
       this.isFilterCheck.kzt = true;
     } else if (filter === CurrencyEnum.Tenge && this.isFilterCheck.kzt) {
       this.usedBanks = [];
@@ -99,7 +93,7 @@ export class CurrencyComponent {
 
     if (filter === CurrencyEnum.Drama && !this.isFilterCheck.amd) {
       this.usedBanks = [];
-      this.usedBanks.push(...this.banks.filter((currency: BankModel)=> currency.bankCurrency === CurrencyEnum.Amd));
+      this.usedBanks.push(...this.banks.filter((currency: SelectedModel)=> currency.currency === CurrencyEnum.Amd));
       this.isFilterCheck.amd = true;
     } else if (filter === CurrencyEnum.Drama && this.isFilterCheck.amd) {
       this.usedBanks = [];
@@ -110,7 +104,7 @@ export class CurrencyComponent {
 
     if (filter === CurrencyEnum.Rupee && !this.isFilterCheck.inr) {
       this.usedBanks = [];
-      this.usedBanks.push(...this.banks.filter((currency: BankModel)=> currency.bankCurrency === CurrencyEnum.Inr));
+      this.usedBanks.push(...this.banks.filter((currency: SelectedModel)=> currency.currency === CurrencyEnum.Inr));
       this.isFilterCheck.inr = true;
     } else if (filter === CurrencyEnum.Rupee && this.isFilterCheck.inr) {
       this.usedBanks = [];
@@ -121,7 +115,7 @@ export class CurrencyComponent {
 
     if (filter === CurrencyEnum.Euro && !this.isFilterCheck.eur) {
       this.usedBanks = [];
-      this.usedBanks.push(...this.banks.filter((currency: BankModel)=> currency.bankCurrency === CurrencyEnum.Eur));
+      this.usedBanks.push(...this.banks.filter((currency: SelectedModel)=> currency.currency === CurrencyEnum.Eur));
       this.isFilterCheck.eur = true;
     } else if (filter === CurrencyEnum.Euro && this.isFilterCheck.eur) {
       this.usedBanks = [];
@@ -130,19 +124,4 @@ export class CurrencyComponent {
       this.isFilterCheck.eur = false;
     }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

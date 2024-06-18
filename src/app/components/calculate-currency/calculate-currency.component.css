@@ -57,7 +57,7 @@ h1 {
   padding: 12px 12px 12px 16px;
   border-radius: 12px;
   border: 1px solid rgb(195, 195, 195);
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   background-color: rgb(244, 244, 244);
 }
@@ -84,6 +84,14 @@ h1 {
   font-weight: 600;
   line-height: 14.52px;
   text-align: left;
+}
+
+.currency-value-img {
+  width: 38px;
+}
+
+.converted-value {
+  font-size: 16px;
 }
 
 /*# sourceMappingURL=calculate-currency.component.css.map */
