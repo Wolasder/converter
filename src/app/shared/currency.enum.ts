@@ -14,11 +14,11 @@ export enum CurrencyEnum {
   Raydium = 'RAY',
   Voyager = 'VGX',
 
-  All = 'Все',
-  Rubles = 'Рубли',
-  Dollars = 'Доллары',
-  Tenge = 'Тенге',
-  Drama = 'Драм',
-  Rupee = 'Рупия',
-  Euro = 'Евро',
+  AllFilter = 'Все',
+  RublesFilter = 'Рубли',
+  DollarsFilter = 'Доллары',
+  TengeFilter = 'Тенге',
+  DramaFilter = 'Драм',
+  RupeeFilter = 'Рупия',
+  EuroFilter = 'Евро',
 }

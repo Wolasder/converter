@@ -1,17 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {BankModel} from "../../shared/model/bank.model";
-import {BANKS} from "../../shared/banks";
+import {Component, Input} from '@angular/core';
 import {CombineModel} from "../../shared/model/combine.model";
-import {FormControl, FormGroup} from "@angular/forms";
-import {catchError, Observable, of, Subject} from "rxjs";
-import {CryptoModel} from "../../shared/model/crypto.model";
-import {HttpClient} from "@angular/common/http";
-import {SelectedModel} from "../../shared/model/selected.model";
 import {CurrencyValueService} from "../../services/currency-value.service";
-import {CurrencyEnum} from "../../shared/currency.enum";
-import {ApiModel} from "../../shared/model/api.model";
-
-
+import {SelectedModel} from "../../shared/model/selected.model";
 
 @Component({
   selector: 'app-calculate-currency',
@@ -19,57 +9,40 @@ import {ApiModel} from "../../shared/model/api.model";
   styleUrls: ['./calculate-currency.component.scss'],
   providers: [CurrencyValueService],
 })
-export class CalculateCurrencyComponent implements OnInit{
-  public sandValue: number = 1;
-  public convertedValue: number = 0;
-  public apiValue: number = 0;
-  public apiValue2: string = '';
-  public combineInfo: CombineModel = new CombineModel() || null;
+export class CalculateCurrencyComponent {
+  protected sandValue: number = 1;
+  protected convertedValue: number = 0;
+  protected apiValue: number = 0;
+  protected combineInfo: CombineModel = new CombineModel() || null;
 
   @Input()
   public set setCombineInfo(model: CombineModel) {
       if (model.send?.name && model.get?.name) {
       this.combineInfo = model;
       this.getCoef();
-      this.qwe()
       }
   }
 
-  constructor(
-    private http: HttpClient,
-    private readonly currencyValueService: CurrencyValueService,
-    ) {}
-
-  ngOnInit() {
-    this.sandValue = +this.sandValue.toFixed(6)
-  }
-
-  qwe() {
-
-
-  }
-
+  constructor(private readonly currencyValueService: CurrencyValueService) {}
 
   private getCoef(): void {
-    if (this.combineInfo.send){
-      this.currencyValueService.getValue(this.combineInfo.send.currency)
-        .subscribe((value: any | undefined) => {
-          if (this.combineInfo.get?.currency !== undefined) {
-            this.apiValue = value?.data?.rates[this.combineInfo.get.currency];
-            console.log(typeof this.apiValue)
-            this.convertedValue = Math.floor(this.apiValue * 100000) / 100000;
-            console.log(this.convertedValue)
-
-          }
-        })
-    }
+      if (this.combineInfo.send){
+        this.currencyValueService.getValue(this.combineInfo.send.currency)
+          .subscribe((value: any | undefined) => {
+            if (this.combineInfo.get?.currency !== undefined) {
+                this.apiValue = value?.data?.rates[this.combineInfo.get.currency];
+              }
+              this.convertedValue = Math.floor(this.apiValue * 100000) / 100000;
+          })
+      }
   }
 
-  swapCalc(): void{
-    console.log('swap')
+  protected swapCalc(): void{
+    const bufferVariable: SelectedModel | null = this.combineInfo.get;
+
+    this.combineInfo.get = this.combineInfo.send;
+    this.combineInfo.send = bufferVariable;
+
+    this.getCoef()
   }
-
-
-
-
 }

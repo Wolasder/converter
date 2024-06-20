@@ -8,12 +8,11 @@ import {FormsModule} from "@angular/forms";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatListModule} from "@angular/material/list";
 import {MatChipsModule} from "@angular/material/chips";
-import {MatLegacyChipsModule} from "@angular/material/legacy-chips";
 
 
 @NgModule({
   declarations: [CurrencyComponent],
-  imports: [CommonModule, MatButtonModule, MatDividerModule, MatIconModule, FormsModule, MatButtonToggleModule, MatListModule, MatChipsModule, MatLegacyChipsModule],
+  imports: [CommonModule, MatButtonModule, MatDividerModule, MatIconModule, FormsModule, MatButtonToggleModule, MatListModule, MatChipsModule,],
   exports: [CurrencyComponent],
 })
 export class CurrencyModule {}

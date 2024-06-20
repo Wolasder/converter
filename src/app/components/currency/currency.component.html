@@ -1,6 +1,7 @@
 <div class="currency-block">
   <h1 class="title" [textContent]="title"></h1>
-  <!-- кнопки Валюта и Криптовалюта-->
+
+  <!--------------- кнопки Валюта и Криптовалюта --------------->
   <div class="button-block">
       <mat-button-toggle-group class="currency-button-block"  aria-label="Font Style" [(ngModel)]="checkedButtonValue">
         <mat-button-toggle
@@ -17,10 +18,12 @@
         >Криптовалюта</mat-button-toggle>
       </mat-button-toggle-group>
   </div>
-<!-- фильтр-->
-  <div>
-    <div *ngIf="checkedButtonValue === 'Валюта'" class="currency-filter-block">
-      <button><</button>
+
+<!--------------- фильтр --------------->
+  <div class="filter-block">
+
+<!--    <button class="swipe-left"><</button>-->
+    <div id="qwe" *ngIf="checkedButtonValue === 'Валюта'" class="currency-filter-block">
       <mat-chip-listbox>
         <div class="block-filter">
           <mat-chip-option
@@ -29,24 +32,26 @@
             (click)="usedFilter(item)"
           >{{item}}</mat-chip-option>
         </div>
-
       </mat-chip-listbox>
-      <button>></button>
     </div>
+<!--    <button class="swipe-right">></button>-->
+
     <div *ngIf="checkedButtonValue==='Криптовалюта'" class="currency-filter-block">
       <mat-chip-listbox>
         <mat-chip-option selected disabled>Криптовалюта</mat-chip-option>
       </mat-chip-listbox>
     </div>
+
   </div>
 
-<!-- поле выбора банка или крипты-->
-  <div>
+<!--------------- поле выбора банка или крипты --------------->
+  <div class="qwe">
     <div *ngIf="checkedButtonValue==='Валюта'" class="selection-fields-block">
       <mat-button-toggle-group name="banks" class="banks-block">
         <mat-button-toggle
           *ngFor="let item of usedBanks"
-          class="selection-field" value=">{{item.name}}"
+          class="selection-field"
+          value=">{{item.name}}"
           (click)="toCalc(item)"
         >
           <div class="selection-field-deep">

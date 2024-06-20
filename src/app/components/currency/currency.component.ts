@@ -1,34 +1,25 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {BANKS} from "../../shared/banks";
 import {CURRENCY} from "../../shared/currency";
 import {CRYPTO} from "../../shared/crypto";
 import {CurrencyEnum} from "../../shared/currency.enum";
 import {SelectedModel} from "../../shared/model/selected.model";
+import {ISCHECK} from "../../shared/isCheck";
+import {IsCheckModel} from "../../shared/model/isCheck.model";
 
 @Component({
   selector: 'app-currency',
   templateUrl: './currency.component.html',
   styleUrls: ['./currency.component.scss'],
 })
-export class CurrencyComponent {
-  public banks: SelectedModel[] = BANKS;
-  public crypto: SelectedModel[] = CRYPTO;
-  public currency: string[] = CURRENCY;
-  public checked: boolean = true;
-  public checkedButtonValue: string = 'Валюта';
-  public checkedButtonBoolean: boolean = true;
-  public currencyFilter: string = '';
-  public clicked: boolean = true;
-  public usedBanks: SelectedModel[] = [];
-  public isFilterCheck: any = {
-    all : true,
-    rub : false,
-    usd : false,
-    kzt : false,
-    amd : false,
-    inr : false,
-    eur : false,
-  }
+export class CurrencyComponent implements OnInit{
+  private banks: SelectedModel[] = BANKS;
+  protected crypto: SelectedModel[] = CRYPTO;
+  protected currency: string[] = CURRENCY;
+  protected checkedButtonValue: string = 'Валюта';
+  protected checkedButtonBoolean: boolean = true;
+  protected usedBanks: SelectedModel[] = [];
+  protected isFilterCheck: IsCheckModel = ISCHECK;
   protected initialSelected: string = 'Все';
 
   @Input() public title: string = '';
@@ -46,81 +37,80 @@ export class CurrencyComponent {
   }
 
   usedFilter(filter: string) {
-    if (filter === CurrencyEnum.All && !this.isFilterCheck.all) {
+    if (filter === CurrencyEnum.AllFilter && !this.isFilterCheck.all) {
       this.usedBanks = [];
       this.usedBanks.push(...this.banks);
       this.isFilterCheck.all = true;
-    }
-    else if (filter === CurrencyEnum.All && this.isFilterCheck.all) {
+    } else if (filter === CurrencyEnum.AllFilter && this.isFilterCheck.all) {
       this.usedBanks = [];
       this.isFilterCheck.all = false;
-    } else if (filter !== CurrencyEnum.All) {
+    } else if (filter !== CurrencyEnum.AllFilter) {
       this.isFilterCheck.all = false;
     }
 
-    if (filter === CurrencyEnum.Rubles && !this.isFilterCheck.rub) {
+    if (filter === CurrencyEnum.RublesFilter && !this.isFilterCheck.rub) {
       this.usedBanks = [];
       this.usedBanks.push(...this.banks.filter((currency: SelectedModel)=> currency.currency === CurrencyEnum.Rub));
       this.isFilterCheck.rub = true;
-    } else if (filter === CurrencyEnum.Rubles && this.isFilterCheck.rub) {
+    } else if (filter === CurrencyEnum.RublesFilter && this.isFilterCheck.rub) {
       this.usedBanks = [];
       this.isFilterCheck.rub = false;
-    } else if (filter !== CurrencyEnum.Rubles) {
+    } else if (filter !== CurrencyEnum.RublesFilter) {
       this.isFilterCheck.rub = false;
     }
 
-    if (filter === CurrencyEnum.Dollars && !this.isFilterCheck.usd) {
+    if (filter === CurrencyEnum.DollarsFilter && !this.isFilterCheck.usd) {
       this.usedBanks = [];
       this.usedBanks.push(...this.banks.filter((currency: SelectedModel)=> currency.currency === CurrencyEnum.Usd));
       this.isFilterCheck.usd = true;
-    } else if (filter === CurrencyEnum.Dollars && this.isFilterCheck.usd) {
+    } else if (filter === CurrencyEnum.DollarsFilter && this.isFilterCheck.usd) {
       this.usedBanks = [];
       this.isFilterCheck.usd = false;
-    } else if (filter !== CurrencyEnum.Dollars) {
+    } else if (filter !== CurrencyEnum.DollarsFilter) {
       this.isFilterCheck.usd = false;
     }
 
-    if (filter === CurrencyEnum.Tenge && !this.isFilterCheck.kzt) {
+    if (filter === CurrencyEnum.TengeFilter && !this.isFilterCheck.kzt) {
       this.usedBanks = [];
       this.usedBanks.push(...this.banks.filter((currency: SelectedModel)=> currency.currency === CurrencyEnum.Kzt));
       this.isFilterCheck.kzt = true;
-    } else if (filter === CurrencyEnum.Tenge && this.isFilterCheck.kzt) {
+    } else if (filter === CurrencyEnum.TengeFilter && this.isFilterCheck.kzt) {
       this.usedBanks = [];
       this.isFilterCheck.kzt = false;
-    } else if (filter !== CurrencyEnum.Tenge) {
+    } else if (filter !== CurrencyEnum.TengeFilter) {
       this.isFilterCheck.kzt = false;
     }
 
-    if (filter === CurrencyEnum.Drama && !this.isFilterCheck.amd) {
+    if (filter === CurrencyEnum.DramaFilter && !this.isFilterCheck.amd) {
       this.usedBanks = [];
       this.usedBanks.push(...this.banks.filter((currency: SelectedModel)=> currency.currency === CurrencyEnum.Amd));
       this.isFilterCheck.amd = true;
-    } else if (filter === CurrencyEnum.Drama && this.isFilterCheck.amd) {
+    } else if (filter === CurrencyEnum.DramaFilter && this.isFilterCheck.amd) {
       this.usedBanks = [];
       this.isFilterCheck.amd = false;
-    } else if (filter !== CurrencyEnum.Drama) {
+    } else if (filter !== CurrencyEnum.DramaFilter) {
       this.isFilterCheck.amd = false;
     }
 
-    if (filter === CurrencyEnum.Rupee && !this.isFilterCheck.inr) {
+    if (filter === CurrencyEnum.RupeeFilter && !this.isFilterCheck.inr) {
       this.usedBanks = [];
       this.usedBanks.push(...this.banks.filter((currency: SelectedModel)=> currency.currency === CurrencyEnum.Inr));
       this.isFilterCheck.inr = true;
-    } else if (filter === CurrencyEnum.Rupee && this.isFilterCheck.inr) {
+    } else if (filter === CurrencyEnum.RupeeFilter && this.isFilterCheck.inr) {
       this.usedBanks = [];
       this.isFilterCheck.inr = false;
-    } else if (filter !== CurrencyEnum.Rupee) {
+    } else if (filter !== CurrencyEnum.RupeeFilter) {
       this.isFilterCheck.inr = false;
     }
 
-    if (filter === CurrencyEnum.Euro && !this.isFilterCheck.eur) {
+    if (filter === CurrencyEnum.EuroFilter && !this.isFilterCheck.eur) {
       this.usedBanks = [];
       this.usedBanks.push(...this.banks.filter((currency: SelectedModel)=> currency.currency === CurrencyEnum.Eur));
       this.isFilterCheck.eur = true;
-    } else if (filter === CurrencyEnum.Euro && this.isFilterCheck.eur) {
+    } else if (filter === CurrencyEnum.EuroFilter && this.isFilterCheck.eur) {
       this.usedBanks = [];
       this.isFilterCheck.eur = false;
-    } else if (filter !== CurrencyEnum.Euro) {
+    } else if (filter !== CurrencyEnum.EuroFilter) {
       this.isFilterCheck.eur = false;
     }
   }

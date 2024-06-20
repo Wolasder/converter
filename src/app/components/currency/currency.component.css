@@ -1,83 +1,17 @@
-.currency-block {
-  border-radius: 20px;
-  box-shadow: 0px 0px 24px 0px rgba(90, 89, 89, 0.1);
-  width: 349px;
-  margin: 24px 12px;
-  padding: 24px;
-  background-color: rgb(255, 255, 255);
-}
+/* Error: Can't find stylesheet to import.
+ *   ,
+ * 1 | @import 'src/environment.scss';
+ *   |         ^^^^^^^^^^^^^^^^^^^^^^
+ *   '
+ *   currency.component.scss 1:9  root stylesheet */
 
-.title {
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 29.05px;
-  text-align: left;
-  color: rgb(41, 41, 41);
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @import 'src/environment.scss';\d\a   \2502          ^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   currency.component.scss 1:9  root stylesheet";
 }
-
-.banks-block {
-  display: flex;
-  flex-direction: column;
-}
-
-.selection-fields-block {
-  overflow-y: scroll;
-  width: 349px;
-  height: 440px;
-}
-
-::ng-deep .selection-field-deep {
-  display: flex !important;
-  align-content: flex-start !important;
-}
-
-.mat-button-toggle-checked {
-  background-color: rgb(233, 255, 214);
-  border-radius: 12px;
-}
-
-.mat-button-toggle-checked.mat-button-toggle-appearance-standard {
-  color: rgb(41, 41, 41);
-}
-
-.button-block {
-  margin-top: 32px;
-  background-color: rgb(244, 244, 244);
-  border-radius: 8px;
-}
-
-.currency-button-block {
-  border: none;
-}
-
-.currency-button {
-  display: flex;
-  align-items: center;
-  height: 40px;
-  border-left: none !important;
-}
-
-.currencyCheck {
-  width: 173px;
-  border: 1px solid rgb(125, 189, 66);
-  background: rgb(125, 189, 66);
-  color: rgb(255, 255, 255);
-  border-radius: 8px;
-}
-.currencyCheck:hover {
-  background: rgb(125, 189, 66);
-}
-
-.currencyUncheck {
-  width: 173px;
-  background: rgb(244, 244, 244);
-  color: rgb(41, 41, 41);
-  border-radius: 8px;
-  border: 1px solid rgb(244, 244, 244);
-}
-.currencyUncheck:hover {
-  background: rgb(255, 255, 255);
-  border-radius: 8px !important;
-}
-
-/*# sourceMappingURL=currency.component.css.map */

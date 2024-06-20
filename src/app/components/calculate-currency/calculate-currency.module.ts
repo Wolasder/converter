@@ -9,7 +9,7 @@ import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [CalculateCurrencyComponent],
-    imports: [CommonModule, MatFormFieldModule, MatIconModule, FormsModule, MatInputModule, MatButtonModule, ReactiveFormsModule],
+  imports: [CommonModule, MatFormFieldModule, MatIconModule, FormsModule, MatInputModule, MatButtonModule, ReactiveFormsModule],
   exports: [CalculateCurrencyComponent],
 })
 export class CalculateCurrencyModule {}
