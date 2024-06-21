@@ -1,4 +1,4 @@
-import {SelectedModel} from "./selected.model";
+import {SelectedModel} from './selected.model';
 
 export class CombineModel {
   public send: SelectedModel | null;

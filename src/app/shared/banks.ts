@@ -1,5 +1,5 @@
 import {CurrencyEnum} from './currency.enum';
-import {SelectedModel} from "./model/selected.model";
+import {SelectedModel} from './model/selected.model';
 
 export const BANKS: SelectedModel[] = [
   {name: 'Альфа-Банк', logo: 'assets/images/banks-logo/Alfa-logo.svg', currency: CurrencyEnum.Rub},
@@ -13,4 +13,4 @@ export const BANKS: SelectedModel[] = [
   {name: 'ОТП Банк', logo: 'assets/images/banks-logo/OTP-bank-logo.svg', currency: CurrencyEnum.Rub},
   {name: 'ВУЗ Банк', logo: 'assets/images/banks-logo/Vuz-bank-logo.svg', currency: CurrencyEnum.Usd},
   {name: 'Кольцо Урала', logo: 'assets/images/banks-logo/KolcoUrala-bank-logo.svg', currency: CurrencyEnum.Rub},
-]
+];

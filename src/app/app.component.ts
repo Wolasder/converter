@@ -1,6 +1,6 @@
-import {Component,} from '@angular/core';
-import {CombineModel} from "./shared/model/combine.model";
-import {SelectedModel} from "./shared/model/selected.model";
+import {Component} from '@angular/core';
+import {CombineModel} from './shared/model/combine.model';
+import {SelectedModel} from './shared/model/selected.model';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +12,10 @@ export class AppComponent {
 
   sendToCalc(event: SelectedModel) {
     this.valueToCalc.send = event;
-    this.valueToCalc = {...this.valueToCalc}
+    this.valueToCalc = {...this.valueToCalc};
   }
   getToCalc(event: SelectedModel) {
-    this.valueToCalc.get = event
-    this.valueToCalc = {...this.valueToCalc}
+    this.valueToCalc.get = event;
+    this.valueToCalc = {...this.valueToCalc};
   }
 }

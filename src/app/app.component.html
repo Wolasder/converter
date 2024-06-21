@@ -1,13 +1,5 @@
 <div class="app-block">
-  <app-currency
-    [title]="'Вы отправляете'"
-    [whenIsCheck]="true"
-    (toAppCalc)="sendToCalc($event)"
-  ></app-currency>
-  <app-currency
-    [title]="'Вы получаете'"
-    [whenIsCheck]="false"
-    (toAppCalc)="getToCalc($event)"
-  ></app-currency>
+  <app-currency [title]="'Вы отправляете'" [whenIsCheck]="true" (toAppCalc)="sendToCalc($event)"></app-currency>
+  <app-currency [title]="'Вы получаете'" [whenIsCheck]="false" (toAppCalc)="getToCalc($event)"></app-currency>
   <app-calculate-currency [setCombineInfo]="valueToCalc"></app-calculate-currency>
 </div>

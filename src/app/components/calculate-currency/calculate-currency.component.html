@@ -1,12 +1,11 @@
 <div class="calculate-block">
   <div class="change-currency-block">
     <h1>Обмен</h1>
-
     <div class="example-button-container">
-      <button class="change-currency" mat-icon-button color="primary" aria-label="Example icon button with a delete icon" (click)="swapCalc()">
+      <button class="change-currency" mat-icon-button color="primary" (click)="swapCalc()">
         <mat-icon>
-          <img class="vector-image" src="/assets/images/Vector-left.svg">
-          <img class="vector-image" src="/assets/images/Vector-right.svg">
+          <img class="vector-image" src="/assets/images/Vector-left.svg" />
+          <img class="vector-image" src="/assets/images/Vector-right.svg" />
         </mat-icon>
       </button>
     </div>
@@ -16,10 +15,10 @@
     <p>Отдаете</p>
     <div class="currency-value">
       <div class="currency-value-img">
-        <img alt="" src="{{combineInfo.send?.logo}}">
+        <img alt="" src="{{ combineInfo.send?.logo }}" />
       </div>
       <mat-form-field class="example-form-field">
-        <input matInput type="number" [(ngModel)]="sandValue">
+        <input matInput type="number" [(ngModel)]="sandValue" />
       </mat-form-field>
     </div>
   </div>
@@ -28,11 +27,11 @@
     <p>Получаете</p>
     <div class="currency-value">
       <div class="currency-value-img">
-        <img alt="" src="{{combineInfo.get?.logo}}">
+        <img alt="" src="{{ combineInfo.get?.logo }}" />
       </div>
       <div>
         <mat-form-field class="example-form-field">
-          <input matInput type="number" readonly [(ngModel)]="convertedValue * sandValue">
+          <input matInput type="number" readonly [(ngModel)]="convertedValue * sandValue" />
         </mat-form-field>
       </div>
     </div>
@@ -40,6 +39,8 @@
 
   <div class="rate-block">
     <p>Курс обмена</p>
-    <div *ngIf="apiValue" class="exchange-rate">{{convertedValue + ' ' + combineInfo.get?.currency}} = 1 {{combineInfo.send?.currency}}</div>
+    <div *ngIf="apiValue" class="exchange-rate">
+      {{ convertedValue + ' ' + combineInfo.get?.currency }} = 1 {{ combineInfo.send?.currency }}
+    </div>
   </div>
 </div>

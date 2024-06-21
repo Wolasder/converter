@@ -23,7 +23,7 @@
   border-left: none;
 }
 
-.banks-block {
+.currency-list-block {
   display: flex;
   flex-direction: column;
   border: none;
@@ -51,34 +51,11 @@
 }
 
 ::ng-deep .selection-field {
-  border-left: none!important;
+  border-left: none !important;
+
   button {
     display: flex;
   }
-  //display: flex!important;
-  //justify-content: start!important;
-  //align-items: start;
-  //width: 332px;
-  //height: 72px;
-  //border-radius: 12px;
-  //border: none;
-  //background-color: rgba(255, 255, 255, 1);
-  //
-  //&:focus{
-  //  background-color: rgba(233, 255, 214, 1);
-  //}
-  //
-  //p {
-  //  font-size: 16px!important;
-  //  font-weight: 500!important;
-  //  line-height: 19.36px!important;
-  //  text-align: left!important;
-  //  margin: 0!important;
-  //}
-  //img {
-  //  width: 32px!important;
-  //  height: 32px!important;
-  //}
 }
 
 //кнопки Валюта и Криптовалюта//
@@ -88,107 +65,87 @@
   border-radius: 8px;
 }
 
-.currency-button-block{
+.currency-button-block {
   border: none;
 }
 
-.currency-button{
+.currency-button {
   display: flex;
   align-items: center;
   height: 40px;
-  border-left: none!important;
+  border-left: none !important;
 }
 
-.currencyCheck{
+.currency-check {
   width: 173px;
   border: 1px solid $currency-check-border-color;
   background: $currency-button-background-color;
   color: $text-white-color;
   border-radius: 8px;
-  &:hover{
+  &:hover {
     background: $currency-button-hover-background-color;
   }
 }
 
-.currencyUncheck{
+.currency-uncheck {
   width: 173px;
   background: $currency-block-background-color;
   color: rgba(41, 41, 41, 1);
   border-radius: 8px;
   border: 1px solid $currency-uncheck-border-color;
-  &:hover{
+  &:hover {
     background: $currency-block-hover-background-color;
-    border-radius: 8px!important;
+    border-radius: 8px !important;
   }
 }
 
 ////фильтр
-.swipe-left {
-  right: 140px !important;
-  left: auto;
-}
-
-.swipe-right {
-  right: 140px !important;
-  left: auto;
-}
-
-
-.filter-block {
+.example-radio-group {
   display: flex;
-}
-
-.currency-filter-block {
-  display: flex;
-  align-items: center;
-  margin: 10px;
+  flex-direction: row;
   overflow-y: auto;
   scrollbar-width: none;
 }
-.block-filter{
-  display: flex;
-}
-  //убирает галочки
-::ng-deep .mat-mdc-standard-chip .mdc-evolution-chip__graphic {
-  height: var(--mdc-chip-with-avatar-avatar-size, 0px)!important;
-  width: var(--mdc-chip-with-avatar-avatar-size, 0px)!important;
-  font-size: var(--mdc-chip-with-avatar-avatar-size, 0px)!important;
+.banks-radio-button {
+  margin: 15px 6px 15px 0px !important;
+  user-select: none;
+
+  &.active {
+    border: 1px solid $filter-check-border-color;
+    border-radius: 8px;
+  }
 }
 
-//.filter-element {
-//  background: rgba(255, 255, 255, 1)!important;
-//  --mdc-chip-label-text-color: rgb(41, 41, 41) !important;
-//  --mdc-chip-elevated-container-color: rgba(255, 255, 255, 1) !important;
-//
-//  &:hover {
-//    background: rgba(255, 255, 255, 1)!important;
-//    border-radius: 8px!important;
-//  }
-//
-//  &:focus-within {
-//    display: none !important;
-//    background: rgba(255, 255, 255, 1)!important;
-//  }
-//}
-.mat-mdc-standard-chip {
-  background-color: $filter-background-color!important;
-  border-radius: 8px!important;
+.crypto-radio-button {
+  margin: 15px 6px 15px 0px !important;
+  user-select: none;
+  border: 1px solid $filter-check-border-color;
+  border-radius: 8px;
 }
-::ng-deep .mat-mdc-chip-ripple {
+
+::ng-deep .mat-mdc-radio-button .mdc-radio {
   display: none !important;
 }
-
-//бордер при выборе
-.mat-mdc-standard-chip.mat-primary.mat-mdc-chip-selected, .mat-mdc-standard-chip.mat-primary.mat-mdc-chip-highlighted {
-  border: 1px solid $filter-check-border-color;
-  --mdc-chip-disabled-label-text-color: $text-dark-color;
-  border-radius: 8px;
-  opacity: 1;
+::ng-deep .mdc-form-field > label {
+  cursor: pointer;
+  padding: 2px 10px 4px 10px !important;
 }
-//::ng-deep .mat-mdc-chip-action:focus .mat.mdc.focus-indicator::before {
-//content: none!important;
-//background-color: rgba(255, 5, 255, 1)!important;
-//}
-::ng-deep .mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) .mdc-evolution-chip__text-label {
-color: $text-dark-color!important;
+
+::ng-deep .currency-filter-block {
+  display: flex;
+  align-items: center;
+  margin: 10px 0px !important;
+}
+
+.filter-scroll-button {
+  height: 50px;
+  padding: 0;
+  border: none;
+  box-shadow: 0px 0px 12px 8px $filter-scroll-button-box-shadow;
+  background: $filter-scroll-button-background-color;
+  cursor: pointer;
+}
+
+.filter-vector-left {
+  transform: scale(-1, -1);
 }

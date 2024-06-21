@@ -1,5 +1,5 @@
 import {CurrencyEnum} from './currency.enum';
-import {SelectedModel} from "./model/selected.model";
+import {SelectedModel} from './model/selected.model';
 
 export const CRYPTO: SelectedModel[] = [
   {name: 'Bitcoin', logo: 'assets/images/crypto-logo/bitcoin-crypto-logo.svg', currency: CurrencyEnum.Bitcoin},
