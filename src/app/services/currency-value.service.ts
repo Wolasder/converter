@@ -1,14 +1,18 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {catchError, Observable, of} from 'rxjs';
+import {API_CURRENCY} from '../shared/api';
 
 @Injectable()
 export class CurrencyValueService {
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
-  public getValue(sendCurrency: string): Observable<any> {
-    return this.http
-      .get('https://api.coinbase.com/v2/exchange-rates?currency=' + sendCurrency)
-      .pipe(catchError(() => of({})));
+  public getValue(sendCurrency: string): Observable<string | {}> {
+    return this.http.get(API_CURRENCY + sendCurrency).pipe(
+      catchError((err: unknown) => {
+        console.error(err);
+        return of({});
+      }),
+    );
   }
 }

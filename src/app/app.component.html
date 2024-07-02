@@ -1,5 +1,25 @@
 <div class="app-block">
-  <app-currency [title]="'Вы отправляете'" [whenIsCheck]="true" (toAppCalc)="sendToCalc($event)"></app-currency>
-  <app-currency [title]="'Вы получаете'" [whenIsCheck]="false" (toAppCalc)="getToCalc($event)"></app-currency>
+  <app-currency
+    [title]="'Вы отправляете'"
+    [onInitFilter]="onInitFilter"
+    [selectedItem]="selectedItemSend"
+    [currency]="currencySend"
+    [usedCurrencies]="usedCurrencySend"
+    [financial_institution]="financial_institution"
+    (toAppCalc)="sendToCalc($event)"
+    (checkedButtonValue)="valueButtonSet($event)"
+  ></app-currency>
+
+  <app-currency
+    [title]="'Вы получаете'"
+    [onInitFilter]="onInitFilter"
+    [selectedItem]="selectedItemGet"
+    [currency]="currencyGet"
+    [usedCurrencies]="usedCurrencyGet"
+    [financial_institution]="financial_institution"
+    (toAppCalc)="getToCalc($event)"
+    (checkedButtonValue)="valueButtonGet($event)"
+  ></app-currency>
+
   <app-calculate-currency [setCombineInfo]="valueToCalc"></app-calculate-currency>
 </div>

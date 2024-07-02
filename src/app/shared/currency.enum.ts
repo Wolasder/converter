@@ -1,4 +1,7 @@
 export enum CurrencyEnum {
+  Crypto = 'Криптовалюта',
+  Currency = 'Валюта',
+
   Rub = 'RUB',
   Usd = 'USD',
   Eur = 'EUR',

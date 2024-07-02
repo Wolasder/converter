@@ -1,63 +1,59 @@
-import {Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
-import {BANKS} from '../../shared/banks';
-import {CURRENCY} from '../../shared/currency';
-import {CRYPTO} from '../../shared/crypto';
+import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {CurrencyEnum} from '../../shared/currency.enum';
 import {SelectedModel} from '../../shared/model/selected.model';
-
-const currencyMap: {[key: string]: string} = {
-  [CurrencyEnum.RublesFilter]: CurrencyEnum.Rub,
-  [CurrencyEnum.DollarsFilter]: CurrencyEnum.Usd,
-  [CurrencyEnum.TengeFilter]: CurrencyEnum.Kzt,
-  [CurrencyEnum.DramaFilter]: CurrencyEnum.Amd,
-  [CurrencyEnum.RupeeFilter]: CurrencyEnum.Inr,
-  [CurrencyEnum.EuroFilter]: CurrencyEnum.Eur,
-} as const;
+import {CURRENCY_MAP} from '../../shared/currency-map';
 
 @Component({
   selector: 'app-currency',
   templateUrl: './currency.component.html',
   styleUrls: ['./currency.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CurrencyComponent {
-  private banks: SelectedModel[] = BANKS;
-  protected crypto: SelectedModel[] = CRYPTO;
-  protected currency: string[] = CURRENCY;
-  protected checkedButtonValue: string = 'Валюта';
   protected checkedButtonBoolean: boolean = true;
-  protected usedBanks: SelectedModel[] = [];
-  protected selectedItem: string = '';
+  protected buttonValue: string = CurrencyEnum.Currency;
 
+  @Input() public selectedItem: string = '';
   @Input() public title: string = '';
-  @Input() public whenIsCheck: boolean = true;
+  @Input() public onInitFilter: string = '';
+  @Input() public currency: string[] = [];
+  @Input() public usedCurrencies: SelectedModel[] = [];
+  @Input() public financial_institution: SelectedModel[] = [];
 
+  @Output() public checkedButtonValue: EventEmitter<string> = new EventEmitter<string>();
   @Output() public toAppCalc: EventEmitter<SelectedModel> = new EventEmitter<SelectedModel>();
 
   @ViewChild('widgetsContent', {read: ElementRef}) public widgetsContent?: ElementRef<any>;
 
-  public toCalc(event: SelectedModel): void {
+  protected currencyValue(event: string) {
+    this.checkedButtonValue.emit(event);
+  }
+
+  protected toCalc(event: SelectedModel): void {
     this.toAppCalc.emit(event);
   }
 
-  public usedFilter(filter: string): void {
+  protected usedFilter(filter: string): void {
     this.selectedItem = filter;
-    this.usedBanks = [];
+    this.usedCurrencies = [];
 
-    if (filter === CurrencyEnum.AllFilter) {
-      this.usedBanks.push(...this.banks);
+    if (filter === this.onInitFilter) {
+      this.usedCurrencies.push(...this.financial_institution);
     } else {
-      this.usedBanks.push(...this.banks.filter((currency: SelectedModel) => currency.currency === currencyMap[filter]));
+      this.usedCurrencies.push(
+        ...this.financial_institution.filter((currency: SelectedModel) => currency.currency === CURRENCY_MAP[filter]),
+      );
     }
   }
 
-  public scrollRight(): void {
+  protected scrollRight(): void {
     this.widgetsContent?.nativeElement.scrollTo({
       left: this.widgetsContent.nativeElement.scrollLeft + 100,
       behavior: 'smooth',
     });
   }
 
-  public scrollLeft(): void {
+  protected scrollLeft(): void {
     this.widgetsContent?.nativeElement.scrollTo({
       left: this.widgetsContent.nativeElement.scrollLeft - 100,
       behavior: 'smooth',

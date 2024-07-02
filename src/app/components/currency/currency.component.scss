@@ -116,12 +116,12 @@
   }
 }
 
-.crypto-radio-button {
-  margin: 15px 6px 15px 0px !important;
-  user-select: none;
-  border: 1px solid $filter-check-border-color;
-  border-radius: 8px;
-}
+//.crypto-radio-button {
+//  margin: 15px 6px 15px 0px !important;
+//  user-select: none;
+//  border: 1px solid $filter-check-border-color;
+//  border-radius: 8px;
+//}
 
 ::ng-deep .mat-mdc-radio-button .mdc-radio {
   display: none !important;
@@ -135,6 +135,7 @@
   display: flex;
   align-items: center;
   margin: 10px 0px !important;
+  justify-content: space-between;
 }
 
 .filter-scroll-button {

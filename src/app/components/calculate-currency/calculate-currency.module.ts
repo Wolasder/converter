@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {CalculateCurrencyComponent} from './calculate-currency.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
@@ -17,6 +17,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
+    NgOptimizedImage,
   ],
   exports: [CalculateCurrencyComponent],
 })

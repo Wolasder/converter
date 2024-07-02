@@ -1,6 +1,6 @@
 import {CurrencyEnum} from './currency.enum';
 
-export const CURRENCY: string[] = [
+export const BANKS_FILTER: string[] = [
   CurrencyEnum.AllFilter,
   CurrencyEnum.RublesFilter,
   CurrencyEnum.DollarsFilter,

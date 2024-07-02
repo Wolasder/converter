@@ -4,8 +4,8 @@
     <div class="example-button-container">
       <button class="change-currency" mat-icon-button color="primary" (click)="swapCalc()">
         <mat-icon>
-          <img class="vector-image" src="/assets/images/Vector-left.svg" />
-          <img class="vector-image" src="/assets/images/Vector-right.svg" />
+          <img alt="" class="vector-image" priority ngSrc="/assets/images/Vector-left.svg" width="24" height="13" />
+          <img alt="" class="vector-image" priority ngSrc="/assets/images/Vector-right.svg" width="24" height="13" />
         </mat-icon>
       </button>
     </div>
@@ -15,7 +15,7 @@
     <p>Отдаете</p>
     <div class="currency-value">
       <div class="currency-value-img">
-        <img alt="" src="{{ combineInfo.send?.logo }}" />
+        <img alt="" src="{{ combineInfo.send.logo }}" />
       </div>
       <mat-form-field class="example-form-field">
         <input matInput type="number" [(ngModel)]="sandValue" />
@@ -27,7 +27,7 @@
     <p>Получаете</p>
     <div class="currency-value">
       <div class="currency-value-img">
-        <img alt="" src="{{ combineInfo.get?.logo }}" />
+        <img alt="" src="{{ combineInfo.get.logo }}" />
       </div>
       <div>
         <mat-form-field class="example-form-field">
@@ -39,8 +39,8 @@
 
   <div class="rate-block">
     <p>Курс обмена</p>
-    <div *ngIf="apiValue" class="exchange-rate">
-      {{ convertedValue + ' ' + combineInfo.get?.currency }} = 1 {{ combineInfo.send?.currency }}
+    <div *ngIf="convertedValue" class="exchange-rate">
+      {{ convertedValue + ' ' + combineInfo.get.currency }} = 1 {{ combineInfo.send.currency }}
     </div>
   </div>
 </div>
