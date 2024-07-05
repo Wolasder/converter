@@ -15,35 +15,25 @@ export class CurrencyComponent {
 
   @Input() public selectedItem: string = '';
   @Input() public title: string = '';
-  @Input() public onInitFilter: string = '';
+  @Input() public usedFilter: string = '';
   @Input() public currency: string[] = [];
   @Input() public usedCurrencies: SelectedModel[] = [];
-  @Input() public financial_institution: SelectedModel[] = [];
+  @Input() public financialInstitution: SelectedModel[] = [];
 
   @Output() public checkedButtonValue: EventEmitter<string> = new EventEmitter<string>();
   @Output() public toAppCalc: EventEmitter<SelectedModel> = new EventEmitter<SelectedModel>();
 
-  @ViewChild('widgetsContent', {read: ElementRef}) public widgetsContent?: ElementRef<any>;
+  @ViewChild('widgetsContent', {read: ElementRef}) public widgetsContent: ElementRef<HTMLElement> | undefined;
 
-  protected currencyValue(event: string) {
-    this.checkedButtonValue.emit(event);
-  }
-
-  protected toCalc(event: SelectedModel): void {
-    this.toAppCalc.emit(event);
-  }
-
-  protected usedFilter(filter: string): void {
-    this.selectedItem = filter;
+  protected useFilter(filter: string): void {
+    this.selectedItem = filter; // filter это item, т.е. выбранный фильтр. Делает бордер при выборе фильтра (меняет NgClass)
     this.usedCurrencies = [];
 
-    if (filter === this.onInitFilter) {
-      this.usedCurrencies.push(...this.financial_institution);
-    } else {
-      this.usedCurrencies.push(
-        ...this.financial_institution.filter((currency: SelectedModel) => currency.currency === CURRENCY_MAP[filter]),
-      );
-    }
+    this.usedCurrencies.push(
+      ...(filter === this.usedFilter
+        ? this.financialInstitution
+        : this.financialInstitution.filter((currency: SelectedModel) => currency.currency === CURRENCY_MAP[filter])),
+    );
   }
 
   protected scrollRight(): void {

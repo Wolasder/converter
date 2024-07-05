@@ -7,14 +7,14 @@
         value="Валюта"
         class="currency-button"
         [ngClass]="{'currency-check': checkedButtonBoolean, 'currency-uncheck': !checkedButtonBoolean}"
-        (click)="checkedButtonBoolean = true; currencyValue(buttonValue)"
+        (click)="checkedButtonBoolean = true; checkedButtonValue.emit(buttonValue)"
         >Валюта</mat-button-toggle
       >
       <mat-button-toggle
         value="Криптовалюта"
         class="currency-button"
         [ngClass]="{'currency-uncheck': checkedButtonBoolean, 'currency-check': !checkedButtonBoolean}"
-        (click)="checkedButtonBoolean = false; currencyValue(buttonValue)"
+        (click)="checkedButtonBoolean = false; checkedButtonValue.emit(buttonValue)"
         >Криптовалюта</mat-button-toggle
       >
     </mat-button-toggle-group>
@@ -31,7 +31,7 @@
           *ngFor="let item of currency"
           class="banks-radio-button"
           [ngClass]="{active: item === selectedItem}"
-          (click)="usedFilter(item)"
+          (click)="useFilter(item)"
         >
           {{ item }}
         </mat-radio-button>
@@ -48,7 +48,7 @@
         *ngFor="let item of usedCurrencies"
         class="selection-field"
         value=">{{ item.name }}"
-        (click)="toCalc(item)"
+        (click)="toAppCalc.emit(item)"
       >
         <div class="selection-field-deep">
           <img alt="#" src="{{ item.logo }}" />

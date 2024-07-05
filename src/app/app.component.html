@@ -1,24 +1,24 @@
 <div class="app-block">
   <app-currency
     [title]="'Вы отправляете'"
-    [onInitFilter]="onInitFilter"
+    [usedFilter]="usedFilter"
     [selectedItem]="selectedItemSend"
     [currency]="currencySend"
     [usedCurrencies]="usedCurrencySend"
-    [financial_institution]="financial_institution"
+    [financialInstitution]="financialInstitution"
     (toAppCalc)="sendToCalc($event)"
-    (checkedButtonValue)="valueButtonSet($event)"
+    (checkedButtonValue)="fillInfo($event, false)"
   ></app-currency>
 
   <app-currency
     [title]="'Вы получаете'"
-    [onInitFilter]="onInitFilter"
+    [usedFilter]="usedFilter"
     [selectedItem]="selectedItemGet"
     [currency]="currencyGet"
     [usedCurrencies]="usedCurrencyGet"
-    [financial_institution]="financial_institution"
+    [financialInstitution]="financialInstitution"
     (toAppCalc)="getToCalc($event)"
-    (checkedButtonValue)="valueButtonGet($event)"
+    (checkedButtonValue)="fillInfo($event, true)"
   ></app-currency>
 
   <app-calculate-currency [setCombineInfo]="valueToCalc"></app-calculate-currency>

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {CombineModel} from './shared/model/combine.model';
 import {SelectedModel} from './shared/model/selected.model';
 import {BANKS} from './shared/banks';
@@ -13,53 +13,45 @@ import {CRYPTO_FILTER} from './shared/crypto-filter';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent implements OnInit {
-  protected financial_institution: SelectedModel[] = BANKS;
+export class AppComponent {
+  protected financialInstitution: SelectedModel[] = BANKS; // изначальное отображение на главном экране в обеих копиях компонента;
+  protected usedFilter: string = CurrencyEnum.AllFilter; // изначальное отображение вкладки 'Все';
   protected currencySend: string[] = BANKS_FILTER;
   protected currencyGet: string[] = BANKS_FILTER;
-  protected usedCurrencySend: SelectedModel[] = [];
-  protected usedCurrencyGet: SelectedModel[] = [];
-  protected onInitFilter: string = CurrencyEnum.AllFilter;
+  protected usedCurrencySend: SelectedModel[] = [...this.financialInstitution];
+  protected usedCurrencyGet: SelectedModel[] = [...this.financialInstitution];
   protected selectedItemSend: string = CurrencyEnum.AllFilter;
   protected selectedItemGet: string = CurrencyEnum.AllFilter;
   protected valueToCalc: CombineModel = new CombineModel();
 
-  public ngOnInit(): void {
-    //изначально отображает все банки на главной странице
-    this.usedCurrencySend.push(...this.financial_institution);
-    this.usedCurrencyGet.push(...this.financial_institution);
-  }
-
-  protected valueButtonSet(event: string): void {
-    if (event === CurrencyEnum.Currency) {
-      this.currencySend = BANKS_FILTER;
-      this.selectedItemSend = CurrencyEnum.AllFilter;
-      this.usedCurrencySend = BANKS;
-      this.onInitFilter = CurrencyEnum.AllFilter;
-      this.financial_institution = BANKS;
+  protected fillInfo(event: string, isGet: boolean): void {
+    const isCurrency: boolean = event === CurrencyEnum.Currency;
+    if (isCurrency) {
+      if (isGet) {
+        [this.currencyGet, this.selectedItemGet, this.usedCurrencyGet] = [BANKS_FILTER, CurrencyEnum.AllFilter, BANKS];
+      } else {
+        [this.currencySend, this.selectedItemSend, this.usedCurrencySend] = [
+          BANKS_FILTER,
+          CurrencyEnum.AllFilter,
+          BANKS,
+        ];
+      }
     } else {
-      this.currencySend = CRYPTO_FILTER;
-      this.selectedItemSend = CurrencyEnum.Crypto;
-      this.usedCurrencySend = CRYPTO;
-      this.onInitFilter = CurrencyEnum.Crypto;
-      this.financial_institution = CRYPTO;
+      if (isGet) {
+        [this.currencyGet, this.selectedItemGet, this.usedCurrencyGet] = [CRYPTO_FILTER, CurrencyEnum.Crypto, CRYPTO];
+      } else {
+        [this.currencySend, this.selectedItemSend, this.usedCurrencySend] = [
+          CRYPTO_FILTER,
+          CurrencyEnum.Crypto,
+          CRYPTO,
+        ];
+      }
     }
-  }
 
-  protected valueButtonGet(event: string): void {
-    if (event === CurrencyEnum.Currency) {
-      this.currencyGet = BANKS_FILTER;
-      this.selectedItemGet = CurrencyEnum.AllFilter;
-      this.usedCurrencyGet = BANKS;
-      this.onInitFilter = CurrencyEnum.AllFilter;
-      this.financial_institution = BANKS;
-    } else {
-      this.currencyGet = CRYPTO_FILTER;
-      this.selectedItemGet = CurrencyEnum.Crypto;
-      this.usedCurrencyGet = CRYPTO;
-      this.onInitFilter = CurrencyEnum.Crypto;
-      this.financial_institution = CRYPTO;
-    }
+    // чтобы при нажатии на Все список не исчезал
+    [this.usedFilter, this.financialInstitution] = isCurrency
+      ? [CurrencyEnum.AllFilter, BANKS]
+      : [CurrencyEnum.Crypto, CRYPTO];
   }
 
   protected sendToCalc(event: SelectedModel): void {
