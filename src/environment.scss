@@ -1,0 +1,41 @@
+//fonts
+//общее//
+$background-color-all: rgba(255, 255, 255, 1);
+$shadow-color: rgba(90, 89, 89, 0.1);
+
+//text all//
+$text-dark-color: rgba(41, 41, 41, 1);
+$text-white-color: rgba(255, 255, 255, 1);
+
+//scroll//
+$scrollbar-thumb-color: rgba(125, 189, 66, 1);
+$scrollbar-body-color: rgba(255, 255, 255, 1);
+
+//main btn currency//
+$currency-block-background-color: rgba(244, 244, 244, 1);
+$currency-block-hover-background-color: rgba(255, 255, 255, 1);
+$currency-button-background-color: rgba(125, 189, 66, 1);
+$currency-button-hover-background-color: rgba(125, 189, 66, 1);
+$currency-check-border-color: rgba(125, 189, 66, 1);
+$currency-uncheck-border-color: rgba(255, 255, 255, 1);
+
+//filter//
+$filter-check-border-color: rgba(125, 189, 66, 1);
+$filter-scroll-button-background-color: rgba(255, 255, 255, 1);
+$filter-scroll-button-box-shadow: rgba(255, 255, 255, 0.9);
+
+//банки и крипта//
+$currency-block-unused-button-color: rgba(244, 244, 244, 1);
+$used-button-background-color: rgba(233, 255, 214, 1);
+
+//input
+$input-focus-background-color: rgba(0, 0, 0, 0);
+$input-border-color: rgba(195, 195, 195, 1);
+$input-background-color: rgba(244, 244, 244, 1);
+
+//swap button
+$swap-shadow-color: rgba(40, 46, 34, 0.16);
+$swap-background-color: rgba(255, 255, 255, 1);
+
+//курс обмена
+$rate-border-color: rgba(92, 92, 92, 1);

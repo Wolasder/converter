@@ -1,0 +1,60 @@
+<div class="currency-block">
+  <h1 class="title" [textContent]="title"></h1>
+  <!--------------- кнопки Валюта и Криптовалюта --------------->
+  <div class="button-block">
+    <mat-button-toggle-group class="currency-button-block" [(ngModel)]="buttonValue">
+      <mat-button-toggle
+        value="Валюта"
+        class="currency-button"
+        [ngClass]="{'currency-check': checkedButtonBoolean, 'currency-uncheck': !checkedButtonBoolean}"
+        (click)="checkedButtonBoolean = true; checkedButtonValue.emit(buttonValue)"
+        >Валюта</mat-button-toggle
+      >
+      <mat-button-toggle
+        value="Криптовалюта"
+        class="currency-button"
+        [ngClass]="{'currency-uncheck': checkedButtonBoolean, 'currency-check': !checkedButtonBoolean}"
+        (click)="checkedButtonBoolean = false; checkedButtonValue.emit(buttonValue)"
+        >Криптовалюта</mat-button-toggle
+      >
+    </mat-button-toggle-group>
+  </div>
+
+  <!--------------- фильтр --------------->
+  <div class="filter-block">
+    <div class="currency-filter-block">
+      <button class="filter-scroll-button" (click)="scrollLeft()">
+        <img alt="#" class="filter-vector-left" src="assets/images/VectorFilter.svg" />
+      </button>
+      <mat-radio-group #widgetsContent class="example-radio-group">
+        <mat-radio-button
+          *ngFor="let item of currency"
+          class="banks-radio-button"
+          [ngClass]="{active: item === selectedItem}"
+          (click)="useFilter(item)"
+        >
+          {{ item }}
+        </mat-radio-button>
+      </mat-radio-group>
+      <button class="filter-scroll-button" (click)="scrollRight()">
+        <img alt="#" src="assets/images/VectorFilter.svg" />
+      </button>
+    </div>
+  </div>
+  <!--------------- поле выбора банка или крипты --------------->
+  <div class="selection-fields-block">
+    <mat-button-toggle-group name="banks" class="currency-list-block">
+      <mat-button-toggle
+        *ngFor="let item of usedCurrencies"
+        class="selection-field"
+        value=">{{ item.name }}"
+        (click)="toAppCalc.emit(item)"
+      >
+        <div class="selection-field-deep">
+          <img alt="#" src="{{ item.logo }}" />
+          <p>{{ item.name }}</p>
+        </div>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</div>

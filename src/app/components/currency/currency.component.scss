@@ -1,0 +1,152 @@
+@import 'src/environment.scss';
+
+.currency-block {
+  border-radius: 20px;
+  box-shadow: 0px 0px 24px 0px $shadow-color;
+  width: 349px;
+  margin: 24px 12px;
+  padding: 24px;
+  background-color: $background-color-all;
+}
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 29.05px;
+  text-align: left;
+  color: $text-dark-color;
+}
+
+//банки
+.mat-button-toggle-checked {
+  background-color: $used-button-background-color;
+  border-radius: 12px;
+  border-left: none;
+}
+
+.currency-list-block {
+  display: flex;
+  flex-direction: column;
+  border: none;
+}
+
+.selection-fields-block {
+  overflow-y: auto;
+  width: 349px;
+  height: 440px;
+  scrollbar-color: $scrollbar-thumb-color $scrollbar-body-color;
+  scrollbar-width: thin;
+}
+
+::ng-deep .selection-field-deep {
+  display: flex !important;
+  align-content: flex-start !important;
+  p {
+    margin-left: 10px;
+    font-weight: 500;
+  }
+}
+
+.mat-button-toggle-checked.mat-button-toggle-appearance-standard {
+  color: $text-dark-color;
+}
+
+::ng-deep .selection-field {
+  border-left: none !important;
+
+  button {
+    display: flex;
+  }
+}
+
+//кнопки Валюта и Криптовалюта//
+.button-block {
+  margin-top: 32px;
+  background-color: $currency-block-background-color;
+  border-radius: 8px;
+}
+
+.currency-button-block {
+  border: none;
+}
+
+.currency-button {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  border-left: none !important;
+}
+
+.currency-check {
+  width: 173px;
+  border: 1px solid $currency-check-border-color;
+  background: $currency-button-background-color;
+  color: $text-white-color;
+  border-radius: 8px;
+  &:hover {
+    background: $currency-button-hover-background-color;
+  }
+}
+
+.currency-uncheck {
+  width: 173px;
+  background: $currency-block-background-color;
+  color: rgba(41, 41, 41, 1);
+  border-radius: 8px;
+  border: 1px solid $currency-uncheck-border-color;
+  &:hover {
+    background: $currency-block-hover-background-color;
+    border-radius: 8px !important;
+  }
+}
+
+////фильтр
+.example-radio-group {
+  display: flex;
+  flex-direction: row;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.banks-radio-button {
+  margin: 15px 6px 15px 0px !important;
+  user-select: none;
+
+  &.active {
+    border: 1px solid $filter-check-border-color;
+    border-radius: 8px;
+  }
+}
+
+//.crypto-radio-button {
+//  margin: 15px 6px 15px 0px !important;
+//  user-select: none;
+//  border: 1px solid $filter-check-border-color;
+//  border-radius: 8px;
+//}
+
+::ng-deep .mat-mdc-radio-button .mdc-radio {
+  display: none !important;
+}
+::ng-deep .mdc-form-field > label {
+  cursor: pointer;
+  padding: 2px 10px 4px 10px !important;
+}
+
+::ng-deep .currency-filter-block {
+  display: flex;
+  align-items: center;
+  margin: 10px 0px !important;
+  justify-content: space-between;
+}
+
+.filter-scroll-button {
+  height: 50px;
+  padding: 0;
+  border: none;
+  box-shadow: 0px 0px 12px 8px $filter-scroll-button-box-shadow;
+  background: $filter-scroll-button-background-color;
+  cursor: pointer;
+}
+
+.filter-vector-left {
+  transform: scale(-1, -1);
+}
